@@ -9,4 +9,12 @@
 /home/vincent/GitRepos/Closest-Pair/main.cpp
 iostream
 -
+vector
+-
+ctime
+-
+fstream
+-
+cmath
+-
 
