@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/Closest_Pair.dir/main.cpp.o  -o Closest_Pair 

@@ -1,3 +1,0 @@
-/home/vincent/GitRepos/Closest-Pair/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/vincent/GitRepos/Closest-Pair/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/vincent/GitRepos/Closest-Pair/cmake-build-debug/CMakeFiles/Closest_Pair.dir
