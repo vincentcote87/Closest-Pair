@@ -95,9 +95,19 @@ Pair closest(vector<Point> points) {
             borderPoints.push_back(points[i]);
     }
 
-    Pair borderPair = bruteforce(borderPoints);
-    if (borderPair.dist < min.dist)
-        min = borderPair;
+    // Pair borderPair = bruteforce(borderPoints);
+    sortPoints(borderPoints, 'y');
+    for (int i = 0; i < borderPoints.size(); i++) {
+        for (int j = i+1; j < borderPoints.size() && (borderPoints[j].y - borderPoints[i].y) < min.dist; j++) {
+            if (distance(borderPoints[i], borderPoints[j]) <= min.dist) {
+                min.p1 = borderPoints[i];
+                min.p2 = borderPoints[j];
+                min.dist = distance(borderPoints[i], borderPoints[j]);
+            }
+        }
+    }
+    // if (borderPair.dist < min.dist)
+    //     min = borderPair;
 
     return min;
 };

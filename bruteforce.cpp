@@ -22,7 +22,7 @@ vector<Point> closestPair(vector<Point> points) {
             int x = points[i].x - points[j].x;
             int y = points[i].y - points[j].y;
             double dist = sqrt((x*x) + (y*y));
-            if (dist < shortestDist) {
+            if (dist <= shortestDist) {
                 shortestDist = dist;
                 closestPair[0] = points[i].id;
                 closestPair[1] = points[j].id;
