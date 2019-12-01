@@ -19,7 +19,7 @@ create: create.cpp
 	$(CC) $(CFLAGS) -o create create.cpp
 
 clean:
-	$(RM) $(TARGET) *.o create
+	$(RM) *.o create divideconquer bruteforce
 
 clean-points:
 	$(RM) ./pointsData/*.txt
