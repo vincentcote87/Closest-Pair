@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
         }
         myFile.close();
     } else {
-        cout<<"File not found"<<endl;
+        cout<<"File not found, did you run ./create <number>?"<<endl;
         return 0;
     }
 
@@ -64,7 +64,6 @@ int main(int argc, char *argv[]) {
     closestPointsPair = closestPair(allPoints);
     cout<<"P1 = ("<<closestPointsPair.p1.x<<","<<closestPointsPair.p1.y<<")"<<endl;
     cout<<"P2 = ("<<closestPointsPair.p2.x<<","<<closestPointsPair.p2.y<<")"<<endl;
-
 
     return 0;
 };
@@ -95,7 +94,6 @@ Pair closest(vector<Point> points) {
             borderPoints.push_back(points[i]);
     }
 
-    // Pair borderPair = bruteforce(borderPoints);
     sortPoints(borderPoints, 'y');
     for (int i = 0; i < borderPoints.size(); i++) {
         for (int j = i+1; j < borderPoints.size() && (borderPoints[j].y - borderPoints[i].y) < min.dist; j++) {
@@ -106,8 +104,6 @@ Pair closest(vector<Point> points) {
             }
         }
     }
-    // if (borderPair.dist < min.dist)
-    //     min = borderPair;
 
     return min;
 };

@@ -7,37 +7,19 @@
 using namespace std;
 
 struct Point {
-    int id;
-    int x;
-    int y;
+    int id = -1;
+    int x = INT32_MAX;
+    int y = INT32_MAX;
 };
 
-// Brute force approach
-vector<Point> closestPair(vector<Point> points) {
-    double shortestDist = 250000.0;
-    int closestPair[2] = {-1,-1};
+struct Pair {
+    Point p1;
+    Point p2;
+    double dist = MAXFLOAT;
+};
 
-    for (int i = 0; i < points.size() - 1; i++) {
-        for (int j = i + 1; j < points.size(); j++) {
-            int x = points[i].x - points[j].x;
-            int y = points[i].y - points[j].y;
-            double dist = sqrt((x*x) + (y*y));
-            if (dist <= shortestDist) {
-                shortestDist = dist;
-                closestPair[0] = points[i].id;
-                closestPair[1] = points[j].id;
-            }
-        }
-    }
-    if (closestPair[0] > -1 && closestPair[1] > -1) {
-        vector<Point> closest;
-        closest.push_back(points[closestPair[0]]);
-        closest.push_back(points[closestPair[1]]);
-        return closest;
-    } else {
-        throw runtime_error("Something went wrong");
-    }
-}
+Pair closestPair(vector<Point> points);
+double distance(Point a, Point b);
 
 int main(int argc, char *argv[]) {
 
@@ -67,16 +49,38 @@ int main(int argc, char *argv[]) {
         }
         myFile.close();
     } else {
-        cout<<"File not found"<<endl;
+        cout<<"File not found, did you run ./create <number>?"<<endl;
         return 0;
     }
 
-    vector<Point> closest = closestPair(allPoints);
-    Point p1 = allPoints[closest[0].id];
-    Point p2 = allPoints[closest[1].id];
-    cout<<"The two closest points are:"<<endl;
-    cout<<"  Point 1 = ("<<p1.x<<","<<p1.y<<")"<<endl;
-    cout<<"  Point 2 = ("<<p2.x<<","<<p2.y<<")"<<endl;
+    Pair closestPointsPair;
+    closestPointsPair = closestPair(allPoints);
+    cout<<"P1 = ("<<closestPointsPair.p1.x<<","<<closestPointsPair.p1.y<<")"<<endl;
+    cout<<"P2 = ("<<closestPointsPair.p2.x<<","<<closestPointsPair.p2.y<<")"<<endl;
 
     return 0;
-}
+};
+
+Pair closestPair(vector<Point> points) {
+    double shortestDist = MAXFLOAT;
+    double dist;
+    Pair shortestPair;
+    for (int i = 0; i < points.size(); i++) {
+        for (int j = i+1; j < points.size(); j++) {
+            dist = distance(points[i], points[j]);
+            if (dist < shortestDist) {
+                shortestDist = dist;
+                shortestPair.p1 = points[i];
+                shortestPair.p2 = points[j];
+                shortestPair.dist = dist;
+            }
+        }
+    }
+    return shortestPair;
+};
+
+double distance(Point a, Point b) {
+    int x = a.x - b.x;
+    int y = a.y - b.y;
+    return sqrt((x*x) + (y*y));
+};
