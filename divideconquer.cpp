@@ -47,13 +47,24 @@ int main(int argc, char *argv[]) {
     ifstream myFile ("./pointsData/Output" + to_string(atoi(argv[1])) + ".txt");
     if (myFile.is_open()) {
         while (getline (myFile,line)) {
-            if(regex_search(line, coordinates, expression)) {
-                p.id = index;
-                p.x = stoi(coordinates[1]);
-                p.y = stoi(coordinates[2]);
-                allPoints.push_back(p);
+            int i = 0;
+            string s1, s2 = "";
+            while (line[i] != ',') {
+                s1 += line[i];
+                i++;
             }
-            index++;
+            i++;
+            while (i < line.length()) {
+                s2 += line[i];
+                i++;
+            }
+            if (s1.length() > 0 && s2.length() > 0) {
+                p.id = index;
+                p.x = stoi(s1);
+                p.y = stoi(s2);
+                allPoints.push_back(p);
+                index++;
+            }
         }
         myFile.close();
     } else {
