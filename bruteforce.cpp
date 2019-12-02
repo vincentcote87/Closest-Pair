@@ -2,7 +2,6 @@
 #include <vector>
 #include <fstream>
 #include <cmath>
-#include <regex>
 #include <cfloat>
 
 using namespace std;
