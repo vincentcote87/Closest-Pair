@@ -54,9 +54,13 @@ int main(int argc, char *argv[]) {
     }
 
     Pair closestPointsPair;
-    closestPointsPair = closestPair(allPoints);
-    cout<<"P1 = ("<<closestPointsPair.p1.x<<","<<closestPointsPair.p1.y<<")"<<endl;
-    cout<<"P2 = ("<<closestPointsPair.p2.x<<","<<closestPointsPair.p2.y<<")"<<endl;
+    if (allPoints.size() > 1) {
+        closestPointsPair = closestPair(allPoints);
+        cout<<"P1 = ("<<closestPointsPair.p1.x<<","<<closestPointsPair.p1.y<<")"<<endl;
+        cout<<"P2 = ("<<closestPointsPair.p2.x<<","<<closestPointsPair.p2.y<<")"<<endl;
+    } else {
+        cout<<"The file was read but not data was extracted"<<endl;
+    }
 
     return 0;
 };
