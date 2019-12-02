@@ -3,6 +3,7 @@
 #include <fstream>
 #include <cmath>
 #include <regex>
+#include <cfloat>
 
 using namespace std;
 
@@ -15,7 +16,7 @@ struct Point {
 struct Pair {
     Point p1;
     Point p2;
-    double dist = MAXFLOAT;
+    double dist = FLT_MAX;
 };
 
 Pair closestPair(vector<Point> points);
@@ -30,7 +31,7 @@ int main(int argc, char *argv[]) {
 
     vector<Point> allPoints;
     string line;
-    regex expression("(.*),(.*)");
+    const regex expression("(.*),(.*)");
     smatch coordinates;
     Point p;
     int index = 0;
@@ -66,7 +67,7 @@ int main(int argc, char *argv[]) {
 };
 
 Pair closestPair(vector<Point> points) {
-    double shortestDist = MAXFLOAT;
+    double shortestDist = FLT_MAX;
     double dist;
     Pair shortestPair;
     for (int i = 0; i < points.size(); i++) {
