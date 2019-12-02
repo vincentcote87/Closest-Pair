@@ -31,8 +31,6 @@ int main(int argc, char *argv[]) {
 
     vector<Point> allPoints;
     string line;
-    const regex expression("(.*),(.*)");
-    smatch coordinates;
     Point p;
     int index = 0;
 
