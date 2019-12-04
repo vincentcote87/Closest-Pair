@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
                 s1 += line[i];
                 i++;
             }
-            i++;
+            i++; // Skip the ','
             while (i < line.length()) {
                 s2 += line[i];
                 i++;
